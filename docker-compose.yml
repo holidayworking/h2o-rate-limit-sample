@@ -1,0 +1,8 @@
+h2o:
+  build: .
+  net: host
+  volumes:
+    - ./app:/app
+redis:
+  image: redis:3.0.5
+  net: host

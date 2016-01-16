@@ -1,0 +1,19 @@
+--- CMakeLists.txt.orig	2016-01-13 15:33:10.000000000 +0900
++++ CMakeLists.txt	2016-01-16 16:42:06.000000000 +0900
+@@ -360,6 +360,7 @@ IF (WITH_MRUBY)
+     TARGET_LINK_LIBRARIES(h2o
+         "${CMAKE_CURRENT_BINARY_DIR}/mruby/host/lib/libmruby.a"
+         "${CMAKE_CURRENT_BINARY_DIR}/mruby/host/mrbgems/mruby-onig-regexp/onig-5.15.0/.libs/libonig.a"
++        "${CMAKE_CURRENT_BINARY_DIR}/mruby/host/mrbgems/mruby-redis/hiredis/libhiredis.a"
+         "m")
+     ADD_DEPENDENCIES(h2o mruby)
+ ENDIF (WITH_MRUBY)
+--- misc/mruby_config.rb.orig	2016-01-13 15:33:10.000000000 +0900
++++ misc/mruby_config.rb	2016-01-16 16:42:38.000000000 +0900
+@@ -26,4 +26,6 @@ MRuby::Build.new do |conf|
+ 
+   # include all the core GEMs
+   conf.gembox 'full-core'
++
++  conf.gem github: 'matsumoto-r/mruby-redis'
+ end
